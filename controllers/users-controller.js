@@ -5,7 +5,7 @@ module.exports = (app) => {
     const register = (req, res) => {
         // res.send(404)
         const user = req.body;
-
+        console.log(user)
         usersService.findUser(user).then((actualUser) => {
             if (actualUser) {
                 res.send("User Already Exists")
@@ -16,7 +16,7 @@ module.exports = (app) => {
                                   req.session["currentUser"] = actualUser
                                   usersService.findUser(actualUser).then((currentUser) => {
                                       if (currentUser) {
-                                          console.log(currentUser)
+
                                           res.json(currentUser)
                                       }
                                   })
