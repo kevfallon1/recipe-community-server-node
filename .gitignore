@@ -1,1 +1,6 @@
 .env
+data/diagnostic.data/metrics.interim
+data/index-6-8061001445726208726.wt
+data/journal/WiredTigerLog.0000000001
+data/WiredTiger.turtle
+data/WiredTiger.wt
