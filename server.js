@@ -20,7 +20,7 @@ app.use(session({
                 }))
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/recipe_community',
+mongoose.connect('mongodb+srv://recipe-community-node:recipecommunitydb@cluster0.ocy12.mongodb.net/recipeDB?retryWrites=true&w=majority',
                  {useNewUrlParser: true, useUnifiedTopology: true});
 
 app.listen(3000)
