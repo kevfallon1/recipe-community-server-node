@@ -6,6 +6,7 @@ module.exports = (app) => {
         // res.send(404)
         const user = req.body;
         console.log(user)
+
         usersService.findUser(user).then((actualUser) => {
             if (actualUser) {
                 res.send("User Already Exists")
