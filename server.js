@@ -28,4 +28,4 @@ mongoose.connect(MONGO_DB_URI,
 
 require("./controllers/users-controller")(app)
 
-app.listen(3000)
+app.listen("https://recipe-community-node-server.herokuapp.com/")
