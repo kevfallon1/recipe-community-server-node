@@ -3,12 +3,11 @@ const usersService = require("../services/users-service")
 module.exports = (app) =>  {
 
     const register = (req,res) => {
+        // res.send(404)
         const user = req.body;
         const currentUser = usersService.createUser(user)
         req.session["currentUser"] = currentUser
-        const userCopy = currentUser
-        userCopy.password = ""
-        res.send(userCopy)
+        res.send(currentUser)
     }
 
     const login = (req,res) => {

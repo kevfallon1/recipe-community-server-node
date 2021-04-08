@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 require('dotenv').config({ path: '.env' });
-
+const bodyparser=require('body-parser');
+app.use(bodyparser.json());
 const MONGO_DB_URI = process.env.MONGO_DB_URI;
 
 // configure CORS
