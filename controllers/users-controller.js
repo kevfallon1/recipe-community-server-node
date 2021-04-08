@@ -28,6 +28,10 @@ module.exports = (app) =>  {
     const logout = (req,res) => {
         req.session.destroy()
     }
+    const test = (req,res) => {
+        console.log("Hello World!")
+        // req.session.destroy()
+    }
 
     const profile = (req,res) => {
         const currentUser = req.session["currentUser"]
@@ -44,5 +48,6 @@ module.exports = (app) =>  {
     app.post("api/login", login)
     app.post("api/logout", logout)
     app.post("api/profile", profile)
+    app.get("api/test", test)
 
 }
