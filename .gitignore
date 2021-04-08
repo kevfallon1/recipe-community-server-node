@@ -4,3 +4,6 @@ data/index-6-8061001445726208726.wt
 data/journal/WiredTigerLog.0000000001
 data/WiredTiger.turtle
 data/WiredTiger.wt
+data/diagnostic.data/metrics.2021-04-08T05-25-15Z-00000
+data/diagnostic.data/metrics.interim
+data/WiredTiger.turtle
