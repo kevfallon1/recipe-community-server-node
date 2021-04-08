@@ -16,8 +16,7 @@ module.exports = (app) => {
                                   req.session["currentUser"] = actualUser
                                   usersService.findUser(actualUser).then((currentUser) => {
                                       if (currentUser) {
-
-                                          res.json(currentUser)
+                                          res.json(actualUser)
                                       }
                                   })
 
