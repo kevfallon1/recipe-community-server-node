@@ -30,7 +30,7 @@ module.exports = (app) =>  {
     }
     const test = (req,res) => {
         console.log("Hello World!")
-        // req.session.destroy()
+        res.send("Hello World!")
     }
 
     const profile = (req,res) => {
@@ -45,9 +45,9 @@ module.exports = (app) =>  {
 
 
     app.post("/api/register", register)
-    app.post("api/login", login)
-    app.post("api/logout", logout)
-    app.post("api/profile", profile)
-    app.get("api/test", test)
+    app.post("/api/login", login)
+    app.post("/api/logout", logout)
+    app.post("/api/profile", profile)
+    app.get("/api/test", test)
 
 }
