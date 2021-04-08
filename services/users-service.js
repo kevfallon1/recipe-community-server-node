@@ -1,27 +1,19 @@
 const usersModel = require("../db/users/users-model")
 
 const createUser = (user) => {
-    usersModel.create(user).then((actualUser) => {
-        return actualUser
-    })
+    return usersModel.create(user)
 }
 
 const findUser = (user) => {
-    usersModel.find({
+    return usersModel.find({
                         username: user.username,
                         password: user.password
-                    }).exec().then(actualUser => actualUser)
+                    }).select("-password")
 }
 
 const findUserById = (user) => {
-
-    usersModel.find({
-                        _id: user._id
-                    }).then((actualUser) => {
-        console.log(actualUser)
-        return actualUser
-
-    })
+    var id = findUser(user).then((actualUser) => (actualUser[0]._doc._id))
+    return usersModel.findById(id)
 }
 
 module.exports = {
