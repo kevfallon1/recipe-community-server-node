@@ -9,7 +9,7 @@ const usersSchema = mongoose.Schema(
         posts: [],
         following: [],
         followers: [],
-        description: String
+        description: String,
     }, {collection: "users"})
 
 module.exports = usersSchema

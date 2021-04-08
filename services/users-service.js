@@ -10,11 +10,22 @@ const findUser = (user) => {
     usersModel.find({
                         username: user.username,
                         password: user.password
+                    }).exec().then(actualUser => actualUser)
+}
+
+const findUserById = (user) => {
+
+    usersModel.find({
+                        _id: user._id
                     }).then((actualUser) => {
+        console.log(actualUser)
         return actualUser
+
     })
 }
+
 module.exports = {
     createUser,
-    findUser
+    findUser,
+    findUserById
 }

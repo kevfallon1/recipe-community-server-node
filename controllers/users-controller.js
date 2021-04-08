@@ -13,10 +13,13 @@ module.exports = (app) =>  {
     const login = (req,res) => {
         const user = req.body
         const currentUser = usersService.findUser(user)
+
+        console.log(currentUser)
+
         if (currentUser){
             req.session["currentUser"] = currentUser
-            const userCopy = currentUser
-            userCopy.password = ""
+            // const userCopy = currentUser
+            // userCopy.password = ""
             res.send(currentUser)
         }else{
             res.send(404)
@@ -40,10 +43,21 @@ module.exports = (app) =>  {
     }
 
 
+    const userId = (req,res) => {
+        const user = req.body
+        const currentUser = usersService.findUserById(user)
+
+        console.log(currentUser)
+        res.send(200)
+
+    }
+
+
     app.post("/api/register", register)
     app.post("/api/login", login)
     app.post("/api/logout", logout)
     app.get("/api/profile", profile)
+    app.get("/api/user", userId)
 
 
 }
