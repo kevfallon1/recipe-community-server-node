@@ -20,13 +20,14 @@ module.exports = (app) =>  {
             userCopy.password = ""
             res.send(currentUser)
         }else{
-            res.send(403)
+            res.send(404)
         }
 
     }
 
     const logout = (req,res) => {
         req.session.destroy()
+        res.send(200)
     }
 
     const profile = (req,res) => {
@@ -34,7 +35,7 @@ module.exports = (app) =>  {
         if (currentUser){
             res.send(currentUser)
         }else{
-            res.send(403)
+            res.send(404)
         }
 
     }
