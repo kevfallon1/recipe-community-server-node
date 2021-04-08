@@ -5,7 +5,10 @@ module.exports = (app) =>  {
     const register = (req,res) => {
         // res.send(404)
         const user = req.body;
-        const currentUser = usersService.createUser(user)
+        const currentUser = usersService.createUser(user);
+
+        // console.log(currentUser)
+
         req.session["currentUser"] = currentUser
         res.send(currentUser)
     }

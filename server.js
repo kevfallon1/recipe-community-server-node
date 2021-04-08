@@ -7,7 +7,7 @@ const MONGO_DB_URI = process.env.MONGO_DB_URI;
 
 // configure CORS
 app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', "https://recipe-community.herokuapp.com/");
+    res.header('Access-Control-Allow-Origin', "http://recipe-community.herokuapp.com/");
     res.header('Access-Control-Allow-Headers',
                'Content-Type, X-Requested-With, Origin');
     res.header('Access-Control-Allow-Methods',
