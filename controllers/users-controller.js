@@ -71,7 +71,7 @@ module.exports = (app) => {
     app.post("/api/register", register)
     app.post("/api/login", login)
     app.post("/api/logout", logout)
-    app.get("/api/profile", profile)
+    app.post("/api/profile", profile)
     // app.post("/api/user", userId)
 
 }
