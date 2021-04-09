@@ -59,19 +59,24 @@ module.exports = (app) => {
 
     }
 
-    // const userId = (req, res) => {
-    //     const user = req.body
-    //     usersService.findUserById(user).then((actualUser) => {
-    //         console.log(actualUser)
-    //     })
-    //     res.send(200)
-    //
-    // }
+    const userId = (req, res) => {
+        const userID = req.params.userId
+        usersService.findUserById(userID).then((actualUser) => {
+            if(actualUser){
+                res.json(actualUser)
+            }else{
+                res.send(404)
+            }
+        })
+
+
+    }
 
     app.post("/api/register", register)
     app.post("/api/login", login)
     app.post("/api/logout", logout)
     app.post("/api/profile", profile)
+    app.get("/api/profile/:userId", userId)
     // app.post("/api/user", userId)
 
 }

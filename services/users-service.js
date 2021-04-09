@@ -10,9 +10,9 @@ const findUser = (user) => {
                     }).select("-password")
 }
 
-const findUserById = (user) => {
-    var id = findUser(user).then((actualUser) => (actualUser[0]._doc._id))
-    return usersModel.findById(id)
+const findUserById = (userID) => {
+    // var id = findUser(user).then((actualUser) => (actualUser[0]._doc._id))
+    return usersModel.findById(userID)
 }
 
 module.exports = {
