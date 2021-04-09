@@ -51,8 +51,9 @@ module.exports = (app) => {
 
     const profile = (req, res) => {
         const currentUser = req.session["currentUser"]
+
         if (currentUser) {
-            res.send(currentUser)
+            res.json(currentUser)
         } else {
             res.send(404)
         }
