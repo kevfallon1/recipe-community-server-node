@@ -6,8 +6,7 @@ const createUser = (user) => {
 
 const findUser = (user) => {
     return usersModel.find({
-                        username: user.username,
-                        password: user.password
+                        username: user.username
                     }).select("-password")
 }
 
