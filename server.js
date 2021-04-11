@@ -9,7 +9,7 @@ const MONGO_DB_URI = process.env.MONGO_DB_URI;
 
 // configure CORS
 app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', "http://localhost:3001");
+    res.header('Access-Control-Allow-Origin', "http://localhost:3000");
     res.header('Access-Control-Allow-Headers',
                'Content-Type, X-Requested-With, Origin');
     res.header('Access-Control-Allow-Methods',
@@ -31,5 +31,6 @@ mongoose.connect(MONGO_DB_URI,
                  {useNewUrlParser: true, useUnifiedTopology: true});
 
 require("./controllers/users-controller")(app)
+require("./controllers/posts-controller")(app)
 
 app.listen(process.env.PORT || 3000)
