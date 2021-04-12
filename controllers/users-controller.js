@@ -28,7 +28,6 @@ module.exports = (app) => {
             }
         })
 
-
     }
 
     const login = (req, res) => {
@@ -65,13 +64,12 @@ module.exports = (app) => {
     const userId = (req, res) => {
         const userID = req.params.userId
         usersService.findUserById(userID).then((actualUser) => {
-            if(actualUser){
+            if (actualUser) {
                 res.json(actualUser)
-            }else{
+            } else {
                 res.send(404)
             }
         })
-
 
     }
 
@@ -79,14 +77,27 @@ module.exports = (app) => {
         const recipeID = req.body
         const userID = req.params.userId
         usersService.updateUserSavedList(userID, recipeID).then((actualUser) => {
-            if (actualUser){
+            if (actualUser) {
                 res.json(actualUser)
-            }else{
+            } else {
                 res.send(404)
             }
 
         })
 
+    }
+
+    const updateUser = (req, res) => {
+        const userBody = req.body
+        const userID = req.params.userId
+
+        usersService.updateUserDetails(userID, userBody).then((actualUser) => {
+            if (actualUser) {
+                res.json(actualUser)
+            } else {
+                res.send(404)
+            }
+        })
     }
 
     app.post("/api/register", register)
@@ -95,5 +106,6 @@ module.exports = (app) => {
     app.post("/api/profile", profile)
     app.get("/api/profile/:userId", userId)
     app.post("/api/user/:userId/recipe_list", addToSavedList)
+    app.post("/api/user/:userId/update_user", updateUser)
 
 }

@@ -20,9 +20,15 @@ const updateUserSavedList = (userId, content) => {
     return usersModel.findByIdAndUpdate(userId, {$push: content})
 }
 
+const updateUserDetails = (userId, content) => {
+
+    return usersModel.findByIdAndUpdate(userId, {$push: content})
+}
+
 module.exports = {
     createUser,
     findUser,
     findUserById,
-    updateUserSavedList
+    updateUserSavedList,
+    updateUserDetails
 }
