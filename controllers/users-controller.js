@@ -51,11 +51,14 @@ module.exports = (app) => {
 
     const profile = (req, res) => {
         const currentUser = req.session["currentUser"]
-        if (currentUser) {
-            res.json(currentUser)
-        } else {
-            res.send(404)
-        }
+        usersService.findUser(currentUser).then((actualUser) => {
+            if (actualUser) {
+                req.session["currentUser"] = actualUser
+                res.json(actualUser)
+            } else {
+                res.send(404)
+            }
+        })
 
     }
 
