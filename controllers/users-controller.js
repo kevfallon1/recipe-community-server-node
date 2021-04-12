@@ -72,11 +72,25 @@ module.exports = (app) => {
 
     }
 
+    const addToSavedList = (req, res) => {
+        const recipeID = req.body
+        const userID = req.params.userId
+        usersService.updateUserSavedList(userID, recipeID).then((actualUser) => {
+            if (actualUser){
+                res.json(actualUser)
+            }else{
+                res.send(404)
+            }
+
+        })
+
+    }
+
     app.post("/api/register", register)
     app.post("/api/login", login)
     app.post("/api/logout", logout)
     app.post("/api/profile", profile)
     app.get("/api/profile/:userId", userId)
-    // app.post("/api/user", userId)
+    app.post("/api/user/:userId/recipe_list", addToSavedList)
 
 }

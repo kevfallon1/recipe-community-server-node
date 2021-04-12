@@ -17,7 +17,6 @@ module.exports = (app) => {
 
     const createPosts = (req,res) => {
         const userPost = req.body
-        console.log(userPost)
         postsService.createPost(userPost).then((actualPost) => res.json(actualPost))
     }
 

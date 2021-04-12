@@ -11,12 +11,18 @@ const findUser = (user) => {
 }
 
 const findUserById = (userID) => {
-    // var id = findUser(user).then((actualUser) => (actualUser[0]._doc._id))
+
     return usersModel.findById(userID)
+}
+
+const updateUserSavedList = (userId, content) => {
+
+    return usersModel.findByIdAndUpdate(userId, {$push: content})
 }
 
 module.exports = {
     createUser,
     findUser,
-    findUserById
+    findUserById,
+    updateUserSavedList
 }
