@@ -17,12 +17,12 @@ const findUserById = (userID) => {
 
 const updateUserSavedList = (userId, content) => {
 
-    return usersModel.findByIdAndUpdate(userId, {$push: content})
+    return usersModel.findByIdAndUpdate(userId, {$push: content},{new: true})
 }
 
 const updateUserDetails = (userId, content) => {
-
-    return usersModel.findByIdAndUpdate(userId, {$push: content})
+    // console.log(content)
+    return usersModel.findByIdAndUpdate(userId, {$push: content},{new: true})
 }
 
 module.exports = {
