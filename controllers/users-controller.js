@@ -7,7 +7,7 @@ module.exports = (app) => {
         const user = req.body;
 
         usersService.findUser(user).then((actualUser) => {
-            if (!(actualUser === [])) {
+            if (actualUser.length !== 0) {
                 res.send("User Already Exists")
             } else {
                 usersService.createUser(user)
