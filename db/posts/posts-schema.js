@@ -8,7 +8,7 @@ const postSchema = mongoose.Schema(
         description: String,
         rating: Number,
         comments: [],
-        likes : Number,
+        likes : [],
     }, {collection: "posts"})
 
 module.exports = postSchema
