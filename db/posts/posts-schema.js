@@ -9,7 +9,6 @@ const postSchema = mongoose.Schema(
         rating: Number,
         comments: [],
         likes : Number,
-        description: String,
     }, {collection: "posts"})
 
 module.exports = postSchema
