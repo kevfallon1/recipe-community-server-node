@@ -32,12 +32,12 @@ module.exports = (app) => {
 
     const login = (req, res) => {
         const user = req.body
-        usersService.findUser(user).then((actualUser) => {
-            if (actualUser) {
+        usersService.verifyUserCredentials(user).then((actualUser) => {
+            if (actualUser.length !== 0) {
                 req.session["currentUser"] = actualUser
                 res.json(actualUser)
             } else {
-                res.send(404)
+                res.send("Incorrect Username/Password")
             }
         })
 

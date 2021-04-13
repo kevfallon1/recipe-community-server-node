@@ -10,6 +10,15 @@ const findUser = (user) => {
                     }).select("-password")
 }
 
+const verifyUserCredentials = (user) => {
+    return usersModel.find({
+                               username: user.username,
+                                password: user.password
+                           }).select("-password")
+}
+
+
+
 const findUserById = (userID) => {
 
     return usersModel.findById(userID)
@@ -30,5 +39,6 @@ module.exports = {
     findUser,
     findUserById,
     updateUserSavedList,
-    updateUserDetails
+    updateUserDetails,
+    verifyUserCredentials
 }
