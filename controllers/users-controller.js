@@ -50,6 +50,7 @@ module.exports = (app) => {
 
     const profile = (req, res) => {
         const currentUser = req.session["currentUser"]
+        console.log(currentUser)
         usersService.findUser(currentUser[0]).then((actualUser) => {
             if (actualUser) {
                 req.session["currentUser"] = actualUser
