@@ -41,7 +41,7 @@ module.exports = {
     createUser,
     findUser,
     findUserById,
-    updateUserSavedList,
+    // updateUserSavedList,
     updateUserDetails,
     verifyUserCredentials
 }
