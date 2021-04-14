@@ -6,18 +6,16 @@ const createUser = (user) => {
 
 const findUser = (user) => {
     return usersModel.find({
-                        username: user.username
-                    }).select("-password")
+                               username: user.username
+                           }).select("-password")
 }
 
 const verifyUserCredentials = (user) => {
     return usersModel.find({
                                username: user.username,
-                                password: user.password
+                               password: user.password
                            }).select("-password")
 }
-
-
 
 const findUserById = (userID) => {
 
@@ -26,12 +24,17 @@ const findUserById = (userID) => {
 
 const updateUserSavedList = (userId, content) => {
 
-    return usersModel.findOneAndReplace({_id:userId}, content,{new:true})
+    return usersModel.findOneAndReplace({_id: userId}, content, {new: true})
 }
 
 const updateUserDetails = (userId, content) => {
-    // console.log(content)
-    return usersModel.findOneAndReplace({_id:userId}, content,{new:true})
+    return usersModel.findById(userId).then((user) => {
+        return usersModel.findOneAndReplace({_id: userId}, content, {new: true}).then((actualUser) => {
+            return usersModel.findByIdAndUpdate(userId, {password: user.password}, {new: true}).select("-password")
+        })
+
+    })
+
 }
 
 module.exports = {
