@@ -1,9 +1,9 @@
 const mongoose = require("mongoose")
 const Schema = require("mongoose");
-var generateObjectId = () =>  {
-        var ObjectId = mongoose.Types.ObjectId
-            return new ObjectId
-}
+const generateObjectId = () => {
+        const ObjectId = mongoose.Types.ObjectId;
+        return new ObjectId
+};
 const usersSchema = mongoose.Schema(
     {
         firstName: String,
@@ -11,7 +11,7 @@ const usersSchema = mongoose.Schema(
         username: String,
         password: String,
         savedRecipes: [],
-        posts: [{_id:{type: Schema.ObjectId, default:generateObjectId}, description:{type: String}}],
+        posts: [{_id:{type: Schema.ObjectId, default:generateObjectId}, description:[]}],
         following: [],
         followers: [],
         description: String,
