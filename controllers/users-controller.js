@@ -111,6 +111,19 @@ module.exports = (app) => {
         })
     }
 
+    const updatePost = (req,res) => {
+        const descId = req.params.postId
+        const desc = req.body
+        usersService.updateUserPost(descId, desc).then((updatedUser) => {
+            if (updatedUser.length !== 0){
+                res.json(updatedUser)
+            }else{
+                res.send(404)
+            }
+
+        })
+    }
+
     app.post("/api/register", register)
     app.post("/api/login", login)
     app.post("/api/logout", logout)
@@ -119,5 +132,6 @@ module.exports = (app) => {
     // app.post("/api/user/:userId/recipe_list", addToSavedList)
     app.post("/api/user/:userId/update_user", updateUser)
     app.get("/api/get_all_users", getAllUsers)
+    app.post("/api/user/posts/:postId/update", updatePost)
 
 }

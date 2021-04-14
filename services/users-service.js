@@ -26,6 +26,9 @@ const getAllUsers = () => {
     return usersModel.find().select("-password")
 }
 
+const updateUserPost = (descId, desc) => {
+    return usersModel.findOneAndUpdate({"posts._id":descId}, {$set: {"posts.$":desc}}, {new:true, "posts.$":1}).select("-password")
+}
 // const updateUserSavedList = (userId, content) => {
 //
 //     return usersModel.findOneAndReplace({_id: userId}, content, {new: true})
@@ -48,5 +51,6 @@ module.exports = {
     // updateUserSavedList,
     updateUserDetails,
     verifyUserCredentials,
-    getAllUsers
+    getAllUsers,
+    updateUserPost
 }
