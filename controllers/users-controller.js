@@ -101,6 +101,16 @@ module.exports = (app) => {
         })
     }
 
+    const getAllUsers = (req, res) => {
+        usersService.getAllUsers().then((userList) => {
+            if (userList.length !== 0){
+                res.json(userList)
+            }else{
+                res.send(404)
+            }
+        })
+    }
+
     app.post("/api/register", register)
     app.post("/api/login", login)
     app.post("/api/logout", logout)
@@ -108,5 +118,6 @@ module.exports = (app) => {
     app.get("/api/profile/:userId", userId)
     // app.post("/api/user/:userId/recipe_list", addToSavedList)
     app.post("/api/user/:userId/update_user", updateUser)
+    app.get("/api/get_all_users", getAllUsers)
 
 }

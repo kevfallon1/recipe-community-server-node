@@ -22,6 +22,10 @@ const findUserById = (userID) => {
     return usersModel.findById(userID)
 }
 
+const getAllUsers = () => {
+    return usersModel.find().select("-password")
+}
+
 // const updateUserSavedList = (userId, content) => {
 //
 //     return usersModel.findOneAndReplace({_id: userId}, content, {new: true})
@@ -43,5 +47,6 @@ module.exports = {
     findUserById,
     // updateUserSavedList,
     updateUserDetails,
-    verifyUserCredentials
+    verifyUserCredentials,
+    getAllUsers
 }
