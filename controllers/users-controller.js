@@ -74,19 +74,19 @@ module.exports = (app) => {
 
     }
 
-    const addToSavedList = (req, res) => {
-        const recipeID = req.body
-        const userID = req.params.userId
-        usersService.updateUserSavedList(userID, recipeID).then((actualUser) => {
-            if (actualUser) {
-                res.json(actualUser)
-            } else {
-                res.send(404)
-            }
-
-        })
-
-    }
+    // const addToSavedList = (req, res) => {
+    //     const recipeID = req.body
+    //     const userID = req.params.userId
+    //     usersService.updateUserSavedList(userID, recipeID).then((actualUser) => {
+    //         if (actualUser) {
+    //             res.json(actualUser)
+    //         } else {
+    //             res.send(404)
+    //         }
+    //
+    //     })
+    //
+    // }
 
     const updateUser = (req, res) => {
         const userBody = req.body
@@ -106,7 +106,7 @@ module.exports = (app) => {
     app.post("/api/logout", logout)
     app.post("/api/profile", profile)
     app.get("/api/profile/:userId", userId)
-    app.post("/api/user/:userId/recipe_list", addToSavedList)
+    // app.post("/api/user/:userId/recipe_list", addToSavedList)
     app.post("/api/user/:userId/update_user", updateUser)
 
 }

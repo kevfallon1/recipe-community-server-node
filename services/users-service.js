@@ -22,10 +22,10 @@ const findUserById = (userID) => {
     return usersModel.findById(userID)
 }
 
-const updateUserSavedList = (userId, content) => {
-
-    return usersModel.findOneAndReplace({_id: userId}, content, {new: true})
-}
+// const updateUserSavedList = (userId, content) => {
+//
+//     return usersModel.findOneAndReplace({_id: userId}, content, {new: true})
+// }
 
 const updateUserDetails = (userId, content) => {
     return usersModel.findById(userId).then((user) => {
