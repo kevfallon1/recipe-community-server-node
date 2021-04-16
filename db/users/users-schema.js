@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
 const Schema = require("mongoose");
 const generateObjectId = () => {
-        const ObjectId = mongoose.Types.ObjectId;
-        return new ObjectId
+    const ObjectId = mongoose.Types.ObjectId;
+    return new ObjectId
 };
 const usersSchema = mongoose.Schema(
     {
@@ -11,10 +11,14 @@ const usersSchema = mongoose.Schema(
         username: String,
         password: String,
         savedRecipes: [],
-        posts: [{_id:{type: Schema.ObjectId, default:generateObjectId}, description:[]}],
+        posts: [{_id: {type: Schema.ObjectId, default: generateObjectId}, description: []}],
         following: [],
         followers: [],
         description: String,
+        type: {
+            type: String,
+            enum: ['USER', 'ADMIN']
+        },
     }, {collection: "users"})
 
 module.exports = usersSchema
