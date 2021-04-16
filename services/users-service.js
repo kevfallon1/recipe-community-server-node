@@ -37,7 +37,12 @@ const updateUserPost = (descId, desc) => {
 const updateUserDetails = (userId, content) => {
     return usersModel.findById(userId).then((user) => {
         return usersModel.findOneAndReplace({_id: userId}, content, {new: true}).then((actualUser) => {
-            return usersModel.findByIdAndUpdate(userId, {password: user.password}, {new: true}).select("-password")
+            if (Object.keys(content).length !== 0){
+                return usersModel.findByIdAndUpdate(userId, {password: user.password}, {new: true}).select("-password")
+            }else{
+                return usersModel.findByIdAndDelete(userId)
+            }
+
         })
 
     })
