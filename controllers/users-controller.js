@@ -8,7 +8,7 @@ module.exports = (app) => {
 
         usersService.findUser(user).then((actualUser) => {
             if (actualUser.length !== 0) {
-                res.send("User Already Exists")
+                res.json([])
             } else {
                 usersService.createUser(user)
                     .then((actualUser) => {
