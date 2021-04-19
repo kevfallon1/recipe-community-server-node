@@ -158,6 +158,6 @@ module.exports = (app) => {
     app.post("/api/user/:userId/update_user", updateUser)
     app.get("/api/get_all_users", getAllUsers)
     app.post("/api/user/posts/:postId/update", updatePost)
-    app.post("api/admin/create_user", createUser)
+    app.post("/api/admin/create_user", createUser)
 
 }
