@@ -30,6 +30,31 @@ module.exports = (app) => {
 
     }
 
+    const createUser = (req, res) => {
+        const user = req.body;
+
+        usersService.findUser(user).then((actualUser) => {
+            if (actualUser.length !== 0) {
+                res.json([])
+            } else {
+                usersService.createUser(user)
+                    .then((actualUser) => {
+                              if (actualUser) {
+                                  usersService.findUser(actualUser).then((currentUser) => {
+                                      if (currentUser) {
+                                          res.json(currentUser)
+                                      }
+                                  })
+
+                              } else {
+                                  res.send(404)
+                              }
+                          }
+                    )
+            }
+        })
+    }
+
     const login = (req, res) => {
         const user = req.body
         usersService.verifyUserCredentials(user).then((actualUser) => {
@@ -37,7 +62,7 @@ module.exports = (app) => {
                 req.session["currentUser"] = actualUser
                 res.json(actualUser)
             } else {
-                res.send("Incorrect Username/Password")
+                res.json([])
             }
         })
 
@@ -133,5 +158,6 @@ module.exports = (app) => {
     app.post("/api/user/:userId/update_user", updateUser)
     app.get("/api/get_all_users", getAllUsers)
     app.post("/api/user/posts/:postId/update", updatePost)
+    app.post("api/admin/create_user", createUser)
 
 }
